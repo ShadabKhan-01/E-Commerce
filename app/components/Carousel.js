@@ -54,7 +54,7 @@ const Carousel = () => {
       {/* Previous Button */}
       <button
         onClick={prevSlide}
-        className="absolute top-1/2 left-4 -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full hover:bg-gray-700"
+        className="hidden md:inline-block absolute top-1/2 left-4 -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full hover:bg-gray-700"
       >
         <ChevronLeftIcon className="w-6 h-6" />
       </button>
@@ -62,7 +62,7 @@ const Carousel = () => {
       {/* Next Button */}
       <button
         onClick={nextSlide}
-        className="absolute top-1/2 right-4 -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full hover:bg-gray-700"
+        className="hidden md:inline-block absolute top-1/2 right-4 -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full hover:bg-gray-700"
       >
         <ChevronRightIcon className="w-6 h-6" />
       </button>
