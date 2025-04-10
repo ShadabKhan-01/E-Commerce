@@ -1,8 +1,11 @@
 'use client';
 import React, { useState } from 'react';
 import SearchBar from './SearchBar';
-
+import { IoCartOutline } from "react-icons/io5";
+import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/nextjs';
+import { redirect } from 'next/navigation';
 const Navbar = () => {
+
   // State to control menu visibility
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -16,7 +19,7 @@ const Navbar = () => {
           </span>
         </a>
         <div className="hidden md:block flex-1">
-        <SearchBar/>
+          <SearchBar />
         </div>
         {/* Hamburger Button */}
         <button
@@ -53,7 +56,7 @@ const Navbar = () => {
           <div>
             {isMenuOpen && <SearchBar />}
           </div>
-          <ul className="flex flex-col md:flex-row md:gap-5 p-4 md:p-0 mt-4 md:mt-0 font-medium border border-gray-100 rounded-lg bg-gray-50 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+          <ul className="flex flex-col md:flex-row md:items-center md:gap-5 p-4 md:p-0 mt-4 md:mt-0 font-medium border border-gray-100 rounded-lg bg-gray-50 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
             <li>
               <a
                 href="/"
@@ -85,6 +88,20 @@ const Navbar = () => {
               >
                 Contact Us
               </a>
+            </li>
+            <li>
+              <SignedIn>
+                <UserButton>
+                  <UserButton.MenuItems>
+                    <UserButton.Action label='Cart' labelIcon={<IoCartOutline />} onClick={()=>{redirect("/cart")}}/>
+                  </UserButton.MenuItems>
+                </UserButton>
+              </SignedIn>
+              <SignedOut>
+                <SignInButton>
+                  <button className="block py-2 px-3 text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 md:dark:hover:bg-transparent">Sing In</button>
+                </SignInButton>
+              </SignedOut>
             </li>
           </ul>
         </div>
